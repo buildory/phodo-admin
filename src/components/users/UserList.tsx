@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useUsers } from '@/hooks/useUsers'
-import { UserListResponse } from '@/lib/data/users'
+import { UserListResponse, UserListParams } from '@/lib/data/users'
 import { UserTable } from './UserTable'
 import { UserFilters } from './UserFilters'
 import { Pagination } from '@/components/ui/pagination'
@@ -12,7 +12,7 @@ interface UserListProps {
 }
 
 export function UserList({ initialData }: UserListProps) {
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<UserListParams>({
     page: initialData.page,
     limit: initialData.limit,
     search: '',
@@ -22,7 +22,7 @@ export function UserList({ initialData }: UserListProps) {
 
   const { data, isLoading, error } = useUsers(filters)
 
-  const currentData = data || initialData
+  const currentData: UserListResponse = data || initialData
 
   if (error) {
     return (
@@ -44,11 +44,13 @@ export function UserList({ initialData }: UserListProps) {
         isLoading={isLoading}
       />
       
-      <Pagination
-        currentPage={currentData.page}
-        totalPages={currentData.totalPages}
-        onPageChange={(page) => setFilters(prev => ({ ...prev, page }))}
-      />
+      {currentData.totalPages > 1 && (
+        <Pagination
+          currentPage={currentData.page}
+          totalPages={currentData.totalPages}
+          onPageChange={(page) => setFilters(prev => ({ ...prev, page }))}
+        />
+      )}
     </div>
   )
 }

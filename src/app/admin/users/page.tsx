@@ -1,29 +1,8 @@
-import { Suspense } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Badge } from '@/components/ui/badge'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
-} from '@/components/ui/table'
-import { 
-  Users, 
-  Plus, 
-  Search, 
-  MoreHorizontal, 
-  Edit, 
-  Trash2,
-  Filter
-} from 'lucide-react'
 import { getUsers } from '@/lib/data/users'
 import { UserList } from '@/components/users/UserList'
 import { UserStats } from '@/components/users/UserStats'
+import { Button } from '@/components/ui/button'
+import { Plus } from 'lucide-react'
 
 interface UsersPageProps {
   searchParams: Promise<{

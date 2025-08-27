@@ -22,7 +22,7 @@ export const useUsers = (params: UserListParams = {}) => {
       return response.json()
     },
     staleTime: 5 * 60 * 1000, // 5분
-    cacheTime: 10 * 60 * 1000, // 10분
+    gcTime: 10 * 60 * 1000, // 10분
   })
 }
 
@@ -38,6 +38,6 @@ export const useUser = (userId: string | null) => {
     },
     enabled: !!userId,
     staleTime: 5 * 60 * 1000,
-    cacheTime: 10 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
   })
 }

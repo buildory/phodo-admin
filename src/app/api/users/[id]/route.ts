@@ -1,12 +1,17 @@
 import { getUserById } from '@/lib/data/users'
 import { NextRequest, NextResponse } from 'next/server'
 
+interface RouteParams {
+  params: Promise<{ id: string }>
+}
+
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: RouteParams
 ) {
   try {
-    const user = await getUserById(params.id)
+    const { id } = await params
+    const user = await getUserById(id)
     
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 })

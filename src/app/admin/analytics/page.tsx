@@ -11,7 +11,8 @@ import {
   Download,
   Eye,
   Clock,
-  Calendar
+  Calendar,
+  LucideIcon
 } from 'lucide-react'
 import { Analytics } from '@/types/database'
 
@@ -63,7 +64,7 @@ function MetricCard({ title, value, change, icon: Icon, description }: {
   title: string
   value: string | number
   change?: string
-  icon: any
+  icon: LucideIcon
   description?: string
 }) {
   return (

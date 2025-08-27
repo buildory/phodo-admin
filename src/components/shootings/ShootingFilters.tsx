@@ -5,22 +5,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Search, X } from 'lucide-react'
+import { ShootingListParams } from '@/lib/data/shootings'
 
 interface ShootingFiltersProps {
-  filters: {
-    page: number
-    limit: number
-    search: string
-    state: string
-    recruit_type: string
-  }
-  onFiltersChange: (filters: {
-    page: number
-    limit: number
-    search: string
-    state: string
-    recruit_type: string
-  }) => void
+  filters: ShootingListParams
+  onFiltersChange: (filters: ShootingListParams) => void
 }
 
 export function ShootingFilters({ filters, onFiltersChange }: ShootingFiltersProps) {
@@ -59,7 +48,7 @@ export function ShootingFilters({ filters, onFiltersChange }: ShootingFiltersPro
           <Input
             id="search"
             placeholder="제목, 설명으로 검색..."
-            value={filters.search}
+            value={filters.search || ''}
             onChange={(e) => handleSearchChange(e.target.value)}
             className="pl-10"
           />

@@ -7,9 +7,11 @@ export async function getCurrentUser(): Promise<User | null> {
     return {
       id: 'mock-user-id',
       email: 'admin@phodo.com',
-      name: '관리자',
-      avatar_url: '',
+      nickname: '관리자',
+      gender: 'prefer_not_to_say',
+      profile_image: '',
       role: 'admin',
+      status: 'active',
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
     }
@@ -38,9 +40,11 @@ export async function getCurrentUser(): Promise<User | null> {
     return {
       id: user.id,
       email: user.email!,
-      name: profile.name,
-      avatar_url: profile.avatar_url,
+      nickname: profile.nickname,
+      gender: profile.gender || 'prefer_not_to_say',
+      profile_image: profile.profile_image,
       role: profile.role || 'user',
+      status: profile.status || 'active',
       created_at: user.created_at,
       updated_at: user.updated_at || user.created_at
     }

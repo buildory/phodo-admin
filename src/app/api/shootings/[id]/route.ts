@@ -1,12 +1,17 @@
 import { getShootingById } from '@/lib/data/shootings'
 import { NextRequest, NextResponse } from 'next/server'
 
+interface RouteParams {
+  params: Promise<{ id: string }>
+}
+
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: RouteParams
 ) {
   try {
-    const shooting = await getShootingById(parseInt(params.id))
+    const { id } = await params
+    const shooting = await getShootingById(parseInt(id))
     
     if (!shooting) {
       return NextResponse.json({ error: 'Shooting not found' }, { status: 404 })

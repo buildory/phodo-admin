@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useShootings } from '@/hooks/useShootings'
-import { ShootingListResponse } from '@/lib/data/shootings'
+import { ShootingListResponse, ShootingListParams } from '@/lib/data/shootings'
 import { ShootingTable } from './ShootingTable'
 import { ShootingFilters } from './ShootingFilters'
 import { Pagination } from '@/components/ui/pagination'
@@ -12,7 +12,7 @@ interface ShootingListProps {
 }
 
 export function ShootingList({ initialData }: ShootingListProps) {
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<ShootingListParams>({
     page: initialData.page,
     limit: initialData.limit,
     search: '',
@@ -22,7 +22,7 @@ export function ShootingList({ initialData }: ShootingListProps) {
 
   const { data, isLoading, error } = useShootings(filters)
 
-  const currentData = data || initialData
+  const currentData: ShootingListResponse = data || initialData
 
   if (error) {
     return (

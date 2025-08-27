@@ -9,7 +9,8 @@ import {
   TrendingUp, 
   Activity,
   Clock,
-  ArrowUpRight
+  ArrowUpRight,
+  LucideIcon
 } from 'lucide-react'
 import { DashboardStats } from '@/types/database'
 
@@ -59,7 +60,7 @@ async function getDashboardStats(): Promise<DashboardStats> {
 function StatCard({ title, value, icon: Icon, trend, description }: {
   title: string
   value: string | number
-  icon: any
+  icon: LucideIcon
   trend?: string
   description?: string
 }) {
