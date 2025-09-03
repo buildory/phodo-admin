@@ -42,7 +42,7 @@ export async function getAppVersionById(id: string): Promise<AppVersion | null> 
   }
 }
 
-export async function getAppVersionsByPlatform(platform: 'ios' | 'android' | 'web'): Promise<AppVersion[]> {
+export async function getAppVersionsByPlatform(platform: 'ios' | 'android' | 'codepush'): Promise<AppVersion[]> {
   try {
     const supabase = await createServerComponentsClient()
     const { data, error } = await supabase

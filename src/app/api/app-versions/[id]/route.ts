@@ -3,10 +3,11 @@ import { getAppVersionById, updateAppVersion, deleteAppVersion } from '@/lib/dat
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   try {
-    const version = await getAppVersionById(params.id)
+    const version = await getAppVersionById(id)
     
     if (!version) {
       return NextResponse.json(
@@ -27,12 +28,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   try {
     const body = await request.json()
     
-    const updatedVersion = await updateAppVersion(params.id, body)
+    const updatedVersion = await updateAppVersion(id, body)
     
     if (!updatedVersion) {
       return NextResponse.json(
@@ -53,10 +55,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   try {
-    const success = await deleteAppVersion(params.id)
+    const success = await deleteAppVersion(id)
     
     if (!success) {
       return NextResponse.json(

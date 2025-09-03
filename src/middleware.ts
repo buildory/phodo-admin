@@ -22,7 +22,7 @@ export async function middleware(request: NextRequest) {
           return request.cookies.getAll()
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
           supabaseResponse = NextResponse.next({
             request,
           })
@@ -61,7 +61,7 @@ export async function middleware(request: NextRequest) {
         // 관리자 권한이 없으면 로그인 페이지로 리다이렉트
         return NextResponse.redirect(new URL('/login', request.url))
       }
-    } catch (error) {
+    } catch {
       // 권한 확인 중 오류가 발생하면 로그인 페이지로 리다이렉트
       return NextResponse.redirect(new URL('/login', request.url))
     }

@@ -32,7 +32,7 @@ function getPlatformIcon(platform: AppVersion['platform']) {
       return <Apple className="h-4 w-4 text-gray-600" />
     case 'android':
       return <Smartphone className="h-4 w-4 text-green-600" />
-    case 'web':
+    case 'codepush':
       return <Globe className="h-4 w-4 text-blue-600" />
     default:
       return <Smartphone className="h-4 w-4 text-gray-600" />
@@ -43,15 +43,13 @@ function getPlatformBadge(platform: AppVersion['platform']) {
   const variants = {
     ios: 'default' as const,
     android: 'secondary' as const,
-    codepush: 'outline' as const,
-    web: 'outline' as const
+    codepush: 'outline' as const
   }
   
   const labels = {
     ios: 'iOS',
     android: 'Android',
-    codepush: 'CodePush',
-    web: 'Web'
+    codepush: 'CodePush'
   }
   
   return (

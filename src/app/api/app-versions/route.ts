@@ -4,7 +4,7 @@ import { getAppVersions, createAppVersion } from '@/lib/data/app'
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
-    const platform = searchParams.get('platform') as 'ios' | 'android' | 'web' | null
+    const platform = searchParams.get('platform') as 'ios' | 'android' | 'codepush' | null
     
     let versions
     if (platform) {
