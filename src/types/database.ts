@@ -77,3 +77,15 @@ export interface Shooting {
   state: 'WAITING_MATCH' | 'MATCHED' | 'COMPLETED' | 'CANCELLED'
   profiles?: User
 }
+
+export interface AppVersion {
+  id: string
+  platform: 'ios' | 'android' | 'codepush'
+  latest_version: string
+  min_supported_version: string
+  force_update: boolean
+  store_url: string
+  notes?: string
+  min_native_supported: string
+  updated_at: string
+}
